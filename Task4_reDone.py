@@ -47,32 +47,21 @@ def ChooseNumbers(str):
     i = 0
     while i < len(str):
         if str[i].isdigit():
-            while str[i].isdigit():
+            while i < len(str) and str[i].isdigit():
                 line += str[i]
                 i += 1
-                if (i >= len(str)):
-                    mylist.append(line)
-                    return mylist
-            while (str[i] == '.' and line.find('.') == -1 and line.find(',') == -1) or \
-                    (str[i]==',' and line.find(',') == -1 and line.find('.') == -1):
-                if i<len(str)-1:
+            if i < len(str) and ((str[i] == '.' and line.find('.') == -1 and line.find(',') == -1) or \
+                    (str[i]==',' and line.find(',') == -1 and line.find('.') == -1)):
+                if i < len(str)-1:
                     if str[i+1].isdigit():
                         line+=str[i]
                 i+=1
-                if (i >= len(str)):
-                    mylist.append(line)
-                    return mylist
-            while str[i].isdigit():
+            while i < len(str) and str[i].isdigit():
                 line += str[i]
                 i+=1
-                if (i >= len(str)):
-                    mylist.append(line)
-                    return mylist
         else:
             i+=1
-            if (i >= len(str)):
-                mylist.append(line)
-                return mylist
+            #
         if line!="":
             mylist.append(line)
         line = ""
